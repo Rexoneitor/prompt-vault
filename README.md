@@ -1,5 +1,7 @@
 # Prompt Vault
 
+> 🌊 Parte del portafolio de **José Aponte** · [rexoneitor.github.io](https://rexoneitor.github.io)
+
 Tu biblioteca personal de prompts: **entrar → buscar → encontrar → copiar → usar**.
 Aplicación de escritorio, local y privada. Sin cuentas, sin nube y sin telemetría.
 
