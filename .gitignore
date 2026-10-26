@@ -1,0 +1,9 @@
+node_modules
+dist
+dist-electron
+dist-server
+release
+*.db
+*.db-wal
+*.db-shm
+.claude/settings.local.json

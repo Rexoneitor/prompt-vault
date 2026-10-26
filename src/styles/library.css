@@ -1,0 +1,484 @@
+/* ------------------------------------------------------------------ Barra de búsqueda y filtros */
+
+.toolbar {
+  display: grid;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
+}
+
+.toolbar-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.search-field {
+  display: flex;
+  flex: 1 1 280px;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+  height: 38px;
+  padding: 0 0.5rem 0 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--text-3);
+  transition:
+    border-color var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+
+.search-field:hover {
+  border-color: var(--text-3);
+}
+
+.search-field:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--ring);
+}
+
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.search-field input::placeholder {
+  color: var(--text-3);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.filter .select,
+.sort .select {
+  height: 32px;
+  padding: 0 1.9rem 0 0.8rem;
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.filter.is-active .select {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.filter.is-active > svg {
+  color: var(--accent-text);
+}
+
+.sort .select {
+  border-radius: var(--r-md);
+}
+
+.filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 32px;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 13px;
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.filter-toggle:hover {
+  border-color: var(--text-3);
+}
+
+.filter-toggle.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.filter-clear {
+  height: 32px;
+  padding: 0 0.55rem;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+.filter-clear:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ Cuadrícula de tarjetas */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 14px;
+}
+
+.grid-home {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 176px;
+  padding: 14px 14px 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease),
+    transform var(--t) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.card.is-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.card.is-archived,
+.row.is-archived {
+  opacity: 0.72;
+}
+
+/* El enlace cubre toda la tarjeta; solo los botones quedan por encima. */
+.card-link,
+.row-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.card-link:focus-visible,
+.row-link:focus-visible {
+  box-shadow: var(--ring);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 24px;
+}
+
+.card-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  color: var(--text-2);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.card-top-actions {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-right: -6px;
+}
+
+.card-check {
+  position: relative;
+  z-index: 2;
+}
+
+.card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 15.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.008em;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-description {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: auto;
+  padding-top: 0.3rem;
+  min-height: 34px;
+}
+
+.card-time {
+  flex: 1;
+  min-width: 0;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.card-vars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Favorito y copia rápida: aparecen al pasar el ratón, salvo el favorito ya marcado. */
+.fav-btn.is-fav {
+  color: var(--cat-amber);
+}
+
+.card .fav-btn:not(.is-fav),
+.row .fav-btn:not(.is-fav) {
+  opacity: 0;
+}
+
+.card:hover .fav-btn,
+.card:focus-within .fav-btn,
+.row:hover .fav-btn,
+.row:focus-within .fav-btn {
+  opacity: 1;
+}
+
+.quick-copy {
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  margin-right: -6px;
+}
+
+.card:hover .quick-copy,
+.card:focus-within .quick-copy,
+.row:hover .quick-copy,
+.row:focus-within .quick-copy,
+.quick-copy.is-copied {
+  opacity: 1;
+}
+
+.quick-copy.is-copied {
+  color: var(--accent-text);
+}
+
+@media (hover: none) {
+  .card .fav-btn,
+  .row .fav-btn,
+  .quick-copy {
+    opacity: 1 !important;
+  }
+}
+
+/* ------------------------------------------------------------------ Lista compacta */
+
+.list {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+.list-head,
+.row {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 150px 112px 170px 44px 84px 40px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.7rem;
+}
+
+.list-head {
+  height: 36px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.row {
+  position: relative;
+  min-height: 58px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--t-fast) var(--ease);
+}
+
+.row:last-child {
+  border-bottom: 0;
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+}
+
+.row:hover {
+  background: var(--hover);
+}
+
+.row.is-selected {
+  background: var(--accent-soft);
+}
+
+.row-lead,
+.row-actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 6px 0;
+}
+
+.row-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.row-description {
+  color: var(--text-2);
+  font-size: 12.5px;
+}
+
+.row-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.row-tags {
+  display: flex;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.row-time {
+  color: var(--text-3);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+/* Columnas secundarias: se van ocultando para que el título siempre tenga sitio. */
+@media (max-width: 1280px) {
+  .list-head,
+  .row {
+    grid-template-columns: 40px minmax(0, 1fr) 150px 112px 84px 40px;
+  }
+
+  .list-head > :nth-child(5),
+  .list-head > :nth-child(6),
+  .row-tags,
+  .row-vars {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .list-head,
+  .row {
+    grid-template-columns: 40px minmax(0, 1fr) 140px 84px 40px;
+  }
+
+  .list-head > :nth-child(4),
+  .row-tool {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .list-head {
+    display: none;
+  }
+
+  .row {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+  }
+
+  .row-category,
+  .row-time {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ Selección múltiple */
+
+.bulk-bar {
+  position: sticky;
+  bottom: 1.25rem;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  width: max-content;
+  max-width: 100%;
+  margin: 1.5rem auto 0;
+  padding: 0.4rem 0.5rem 0.4rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-xl);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-pop);
+  animation: pop-in 0.18s var(--ease);
+}
+
+.bulk-count {
+  margin-right: 0.35rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.bulk-divider {
+  align-self: stretch;
+  width: 1px;
+  margin: 4px 4px;
+  background: var(--border);
+}
+
+.bulk-danger:hover:not(:disabled) {
+  color: var(--danger);
+}

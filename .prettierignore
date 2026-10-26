@@ -1,0 +1,7 @@
+dist
+dist-electron
+dist-server
+release
+build
+node_modules
+package-lock.json

@@ -1,0 +1,81 @@
+/*
+ * Tokens de diseño. Cada token se define UNA vez con light-dark(claro, oscuro):
+ * los dos temas están diseñados a propósito (no son una inversión de colores).
+ * `color-scheme` decide cuál se aplica: sistema por defecto, o forzado con data-theme.
+ */
+:root {
+  color-scheme: light dark;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+  /* Superficies */
+  --bg: light-dark(#f7f6f3, #121211);
+  --bg-sidebar: light-dark(#f0eee9, #0d0d0c);
+  --surface: light-dark(#ffffff, #1a1a18);
+  --surface-raised: light-dark(#ffffff, #21211f);
+  --surface-sunken: light-dark(#faf9f6, #151513);
+  --hover: light-dark(rgb(29 28 26 / 0.05), rgb(255 255 255 / 0.06));
+  --active: light-dark(rgb(29 28 26 / 0.09), rgb(255 255 255 / 0.1));
+  --border: light-dark(#e7e4dc, #292825);
+  --border-strong: light-dark(#d4d0c5, #3c3b36);
+  --backdrop: light-dark(rgb(24 22 16 / 0.36), rgb(0 0 0 / 0.62));
+
+  /* Texto */
+  --text: light-dark(#1d1c1a, #ecebe6);
+  --text-2: light-dark(#5d5a52, #aeaa9f);
+  --text-3: light-dark(#8a867c, #7d7a70);
+
+  /* Acento: verdigris */
+  --accent: light-dark(#0f7b65, #3dcaa2);
+  --accent-hover: light-dark(#0b6653, #62dcb8);
+  --on-accent: light-dark(#ffffff, #06281f);
+  --accent-soft: light-dark(#e1f1ec, rgb(61 202 162 / 0.13));
+  --accent-text: light-dark(#0a6551, #6fe0bf);
+
+  --danger: light-dark(#c5392b, #f1766a);
+  --danger-hover: light-dark(#a82e22, #f58f85);
+  --danger-soft: light-dark(#fbebe9, rgb(241 118 106 / 0.13));
+  --warning-soft: light-dark(#fbf3df, rgb(232 185 79 / 0.13));
+  --warning-text: light-dark(#7a5a0c, #e9c36b);
+
+  --shadow-color: light-dark(rgb(36 30 12 / 0.13), rgb(0 0 0 / 0.55));
+  --shadow-pop: 0 14px 40px var(--shadow-color), 0 1px 3px var(--shadow-color);
+  --shadow-card: 0 1px 2px light-dark(rgb(36 30 12 / 0.05), rgb(0 0 0 / 0.3));
+  --shadow-soft: 0 6px 20px light-dark(rgb(36 30 12 / 0.08), rgb(0 0 0 / 0.38));
+  --ring: 0 0 0 3px light-dark(rgb(15 123 101 / 0.25), rgb(61 202 162 / 0.3));
+
+  /* Categorías (clave guardada en la base de datos → color) */
+  --cat-slate: light-dark(#6b7280, #9ca3af);
+  --cat-rose: light-dark(#d6436c, #f0789b);
+  --cat-orange: light-dark(#d9702a, #f29a5a);
+  --cat-amber: light-dark(#b98a0f, #e6b94d);
+  --cat-lime: light-dark(#6f9a1d, #a6d055);
+  --cat-emerald: light-dark(#1f9a63, #4fcf93);
+  --cat-teal: light-dark(#14877f, #4cc9c0);
+  --cat-sky: light-dark(#2a85c9, #63b4ee);
+  --cat-indigo: light-dark(#5a5fd0, #8f94f0);
+  --cat-violet: light-dark(#8450cf, #b189f0);
+  --cat-pink: light-dark(#c8449f, #ec7cc9);
+
+  /* Forma y movimiento */
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 110ms;
+  --t: 180ms;
+
+  --sidebar-w: 268px;
+  --page-pad: clamp(1rem, 3.2vw, 2.5rem);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

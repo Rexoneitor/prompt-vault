@@ -1,0 +1,571 @@
+/* ------------------------------------------------------------------ Detalle del prompt */
+
+.page-prompt {
+  max-width: 900px;
+}
+
+.crumbs {
+  margin-bottom: 1.1rem;
+}
+
+.crumb-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 4px 8px 4px 4px;
+  margin-left: -4px;
+  border-radius: var(--r-md);
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+.crumb-back:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+
+.prompt-header {
+  margin-bottom: 1.1rem;
+}
+
+.prompt-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem 0.75rem;
+  font-size: clamp(32px, 4.4vw, 46px);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.prompt-title .demo-badge,
+.prompt-title .chip {
+  align-self: center;
+  font-family: var(--font-sans);
+}
+
+.prompt-description {
+  max-width: 68ch;
+  margin-top: 0.7rem;
+  color: var(--text-2);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.prompt-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  margin-top: 1rem;
+}
+
+.meta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 24px;
+  padding: 0 0.5rem 0 0.1rem;
+  border-radius: 6px;
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+a.meta-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.meta-link.is-empty {
+  color: var(--text-3);
+}
+
+.chip-link:hover {
+  background: var(--active);
+  color: var(--text);
+}
+
+/* Barra de acciones: siempre a mano, incluso en prompts largos */
+.prompt-actions {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 calc(var(--page-pad) * -1) 1.1rem;
+  padding: 0.7rem var(--page-pad);
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.prompt-actions-spacer {
+  flex: 1;
+}
+
+.copy-shortcut {
+  margin-left: 0.2rem;
+  opacity: 0.85;
+}
+
+.copy-btn {
+  min-width: 196px;
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+.copy-btn.is-copied {
+  animation: copied-pop 0.32s var(--ease);
+}
+
+@keyframes copied-pop {
+  40% {
+    transform: scale(1.025);
+  }
+}
+
+.icon-btn.is-fav {
+  color: var(--cat-amber);
+}
+
+@media (max-width: 720px) {
+  .copy-btn {
+    flex: 1 1 100%;
+  }
+
+  .copy-shortcut {
+    display: none;
+  }
+
+  .prompt-actions-spacer {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ Contenido */
+
+.prompt-card {
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  overflow: clip;
+}
+
+.prompt-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-sunken);
+}
+
+.prompt-card-label {
+  color: var(--text-3);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.prompt-card-stats {
+  color: var(--text-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.prompt-body {
+  padding: 1.4rem 1.5rem 1.6rem;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.prompt-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.prompt-code {
+  position: relative;
+  margin: 0.9rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.prompt-code:first-child {
+  margin-top: 0;
+}
+
+.prompt-code:last-child {
+  margin-bottom: 0;
+}
+
+.prompt-code-lang {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.var {
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  white-space: nowrap;
+}
+
+.var-filled {
+  padding: 0 2px;
+  background: color-mix(in oklab, var(--accent) 15%, transparent);
+  box-shadow: inset 0 -2px 0 color-mix(in oklab, var(--accent) 70%, transparent);
+  border-radius: 3px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre-wrap;
+}
+
+/* ------------------------------------------------------------------ Variables */
+
+.variables {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.variables.is-open {
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+}
+
+.variables-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  min-height: 46px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--r-lg);
+  text-align: left;
+  color: var(--accent-text);
+}
+
+.variables-title {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.variables-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  margin-left: 0.3rem;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--hover);
+  color: var(--text-2);
+  font-size: 11.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.variables-hint {
+  margin-left: auto;
+  color: var(--text-3);
+  font-size: 12.5px;
+}
+
+.variables-chevron {
+  flex: none;
+  color: var(--text-3);
+  transition: transform var(--t) var(--ease);
+}
+
+.variables.is-open .variables-chevron {
+  transform: rotate(180deg);
+}
+
+.variables-body {
+  padding: 0.2rem 1rem 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.variables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem 1rem;
+  padding-top: 0.95rem;
+}
+
+.var-name {
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.variable-input {
+  min-height: 36px;
+  max-height: 200px;
+  field-sizing: content;
+  resize: vertical;
+}
+
+.variables-clear {
+  margin-top: 0.8rem;
+  color: var(--text-3);
+  font-size: 12.5px;
+}
+
+.variables-clear:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .variables-hint {
+    display: none;
+  }
+
+  .variables-chevron {
+    margin-left: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ Notas, historial y pie */
+
+.notes-card {
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cat-amber);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+}
+
+.notes-title {
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.notes-text {
+  margin-top: 0.35rem;
+  color: var(--text-2);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.history {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem 0.4rem 0.4rem;
+}
+
+.history-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 36px;
+  padding: 0 0.6rem;
+  border-radius: var(--r-md);
+  font-weight: 600;
+}
+
+.history-toggle:hover {
+  background: var(--hover);
+}
+
+.history-toggle > svg:first-child {
+  color: var(--text-3);
+}
+
+.history-chevron {
+  color: var(--text-3);
+  transition: transform var(--t) var(--ease);
+}
+
+.history-toggle[aria-expanded='true'] .history-chevron {
+  transform: rotate(180deg);
+}
+
+.history-body {
+  border-top: 1px solid var(--border);
+}
+
+.history-empty {
+  padding: 1.1rem 1.2rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.version {
+  border-bottom: 1px solid var(--border);
+}
+
+.version:last-child {
+  border-bottom: 0;
+}
+
+.version-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  transition: background var(--t-fast) var(--ease);
+}
+
+.version-head:hover {
+  background: var(--hover);
+}
+
+.version-number {
+  display: grid;
+  place-items: center;
+  min-width: 34px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--hover);
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.version-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.version-name {
+  font-weight: 500;
+}
+
+.version-notes {
+  color: var(--text-2);
+  font-size: 12.5px;
+}
+
+.version-date {
+  color: var(--text-3);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.version-chevron {
+  color: var(--text-3);
+  transition: transform var(--t) var(--ease);
+}
+
+.version.is-open .version-chevron {
+  transform: rotate(180deg);
+}
+
+.version-body {
+  padding: 0 1rem 1rem;
+}
+
+.version-note-full {
+  margin-bottom: 0.7rem;
+  color: var(--text-2);
+}
+
+.version-same {
+  padding: 0.8rem 0;
+  color: var(--text-3);
+}
+
+.version-content,
+.diff {
+  max-height: 340px;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-sunken);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.diff {
+  padding: 0.5rem 0;
+}
+
+.diff-line {
+  display: block;
+  padding: 0 1rem;
+}
+
+.diff-add {
+  background: color-mix(in oklab, var(--accent) 15%, transparent);
+}
+
+.diff-del {
+  background: var(--danger-soft);
+}
+
+.diff-mark {
+  display: inline-block;
+  width: 1.5em;
+  color: var(--text-3);
+  user-select: none;
+}
+
+.version-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.version-delete {
+  margin-left: auto;
+}
+
+.version-delete:hover {
+  color: var(--danger);
+}
+
+.prompt-footnote {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.4rem;
+  margin-top: 2rem;
+  color: var(--text-3);
+  font-size: 12.5px;
+}

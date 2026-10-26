@@ -1,0 +1,227 @@
+/* ------------------------------------------------------------------ Editor */
+
+.page-editor {
+  max-width: 1240px;
+}
+
+.editor-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: -0.5rem 0 1.4rem;
+  padding: 0.5rem 0;
+  background: color-mix(in oklab, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.editor-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.editor-bar-title {
+  font-weight: 600;
+}
+
+.editor-dirty {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--warning-soft);
+  color: var(--warning-text);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.editor-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary .kbd {
+  border-color: color-mix(in oklab, var(--on-accent) 35%, transparent);
+  background: transparent;
+  color: var(--on-accent);
+}
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.editor-main {
+  min-width: 0;
+}
+
+.editor-title {
+  width: 100%;
+  padding: 0.15rem 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3.6vw, 40px);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.editor-description {
+  width: 100%;
+  padding: 0.35rem 0 1.1rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 15.5px;
+}
+
+.editor-title::placeholder,
+.editor-description::placeholder,
+.editor-content::placeholder {
+  color: var(--text-3);
+}
+
+.editor-card {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  overflow: clip;
+  transition:
+    border-color var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
+}
+
+.editor-card:focus-within {
+  border-color: var(--accent);
+  box-shadow: var(--ring);
+}
+
+.editor-card.has-error {
+  border-color: var(--danger);
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-sunken);
+}
+
+.editor-toolbar-hint {
+  margin-left: auto;
+  padding-left: 0.75rem;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.editor-content {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  padding: 1.1rem 1.3rem;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 15px;
+  line-height: 1.7;
+  field-sizing: content;
+  resize: vertical;
+}
+
+.editor-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem 1.2rem;
+  padding: 0.55rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.editor-vars {
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+}
+
+.keep-previous {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-lg);
+}
+
+.editor-side {
+  position: sticky;
+  top: 72px;
+  display: grid;
+  gap: 1rem;
+}
+
+.side-card {
+  display: grid;
+  gap: 0.95rem;
+  padding: 1.05rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+}
+
+.side-title {
+  color: var(--text-3);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  color: var(--text-2);
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+
+.fav-toggle:hover {
+  background: var(--hover);
+}
+
+.fav-toggle.is-fav {
+  border-color: color-mix(in oklab, var(--cat-amber) 55%, transparent);
+  background: color-mix(in oklab, var(--cat-amber) 11%, transparent);
+  color: var(--cat-amber);
+}
+
+@media (max-width: 1240px) {
+  .editor-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .editor-side {
+    position: static;
+  }
+
+  .editor-toolbar-hint {
+    display: none;
+  }
+}
